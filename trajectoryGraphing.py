@@ -15,6 +15,14 @@ def get_rot_energy(N):
 def get_move_energy(v):
     return(m/2*v**2) 
 
+def draw_circle(p,line):    
+    XX=[]
+    YY=[]
+    for phi in np.arange(3.14,-3.20,-0.1):
+        XX.append(np.cos(phi)*r+p.x)
+        YY.append(np.sin(phi)*r+p.y)
+    plt.plot(XX,YY,line,linewidth = 2)
+    
 def kinematic(x,v,N):    
     h=N.rotatedUp()*(1/I)*r - v     
     F,err=h.norm()
@@ -48,3 +56,11 @@ for fr in np.arange(0.29,0.7,0.2):
     plt.plot(XX,YY)
     plt.xlim((-9,3))
     plt.ylim((-5,9))
+    
+    draw_circle(x_start,'--')
+    
+draw_circle(point(),'')
+
+plt.figure(2)
+plt.plot(en)
+plt.show()
